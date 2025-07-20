@@ -3,6 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ .Title }} — My Site</title>
+ <link rel="preload"
+        href="/static/fonts/stripped/MononokiNerdFont-Regular.subset.woff2"
+        as="font" type="font/woff2" crossorigin>
+  <link rel="preload"
+        href="/static/fonts/stripped/MononokiNerdFont-Italic.subset.woff2"
+        as="font" type="font/woff2" crossorigin>
+  <link rel="preload"
+        href="/static/fonts/stripped/MononokiNerdFont-Bold.subset.woff2"
+        as="font" type="font/woff2" crossorigin>
+  <link rel="preload"
+        href="/static/fonts/stripped/MononokiNerdFont-BoldItalic.subset.woff2"
+        as="font" type="font/woff2" crossorigin>
+  <link rel="preload"
+        href="/static/fonts/stripped/MononokiNerdFontMono-Regular.subset.woff2"
+        as="font" type="font/woff2" crossorigin>
+
+  <!-- Inline critical @font-face pointing at those subset files -->
+  <style>
+    @font-face {
+      font-family: 'Mononoki Nerd';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/static/fonts/stripped/MononokiNerdFont-Regular.subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Mononoki Nerd';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/static/fonts/stripped/MononokiNerdFont-Italic.subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Mononoki Nerd';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/static/fonts/stripped/MononokiNerdFont-Bold.subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Mononoki Nerd';
+      font-style: italic;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/static/fonts/stripped/MononokiNerdFont-BoldItalic.subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Mononoki Nerd Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/static/fonts/stripped/MononokiNerdFontMono-Regular.subset.woff2') format('woff2');
+    }
+
+    body {
+      font-family: 'Mononoki Nerd', system-ui, sans-serif;
+    }
+    code, pre {
+      font-family: 'Mononoki Nerd Mono', monospace;
+    }
+  </style>
   <link rel="stylesheet" href="/static/css/bundle.min.css">
 </head>
 <body>
