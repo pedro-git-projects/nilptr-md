@@ -25,7 +25,7 @@ const (
 
 const (
 	ApplicationJSON          HeaderValue = "application/json"
-	TextHTML                 HeaderValue = "text/html"
+	TextHTML                 HeaderValue = "text/html; charset=utf-8"
 	TextMarkdown             HeaderValue = "text/markdown"
 	BearerScheme             HeaderValue = "Bearer %s" // format with token
 	NoStore                  HeaderValue = "no-store"
