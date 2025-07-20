@@ -195,7 +195,7 @@ func (a *App) BundleCSS(order []string) error {
 }
 
 func (a *App) Run() error {
-	order := []string{"variables.css", "base.css", "layout.css", "fonts.css"}
+	order := []string{"variables.css", "base.css", "layout.css", "fonts.css", "header.css", "footer.css"}
 	if err := a.BundleCSS(order); err != nil {
 		a.logger.Fatalf("css bundling failed: %v", err)
 	}

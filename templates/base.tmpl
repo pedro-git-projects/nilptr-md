@@ -68,16 +68,30 @@
 </head>
 <body>
   <header>
-    <nav>
-      <a href="/">Home</a> |
+  <div class="header-container">
+    <nav class="nav-links">
+      <a href="/">Home</a>
       <a href="/about">About</a>
+      <a href="/projetos">Projetos</a>
+      <a href="/blog">Blog</a>
+      <a href="/cv">CV</a>
+      <a href="/sobre">Sobre</a>
+      <a href="/contato">Contato</a>
     </nav>
-  </header>
+  </div>
+</header>
   <main>
     {{ .Content }}
   </main>
   <footer>
-    <small>© {{ .Now.Year }}</small>
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-logo">
+           <img src="/static/logo/logo-dark.svg" alt="Logo" /> 
+        </div>
+          <p class="footer-text">&copy; {{ .Now.Year }} nilptr. Direitos Reservados.</p>    
+      </div>
+    </div>
   </footer>
 </body>
 </html>

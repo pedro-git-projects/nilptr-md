@@ -1,0 +1,49 @@
+/*=============================================
+  Header background & container
+=============================================*/
+header {
+  background-color: var(--color-header-bg);
+}
+
+.header-container {
+  margin: 0 auto;
+  max-width: 1280px;       /* tailwind’s screen-xl */
+  height: 4rem;            /* h-16 */
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;         /* px-4 */
+}
+@media (min-width: 640px) {
+  .header-container {
+    padding: 0 1.5rem;     /* sm:px-6 */
+  }
+}
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 0 2rem;       /* lg:px-8 */
+  }
+}
+
+/*=============================================
+  Nav links flex & spacing
+=============================================*/
+.nav-links {
+  display: flex;
+  gap: 1.5rem;             /* gap-6 */
+  font-size: 0.875rem;     /* text-sm */
+}
+
+/* reuse your global link styles */
+.nav-links a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--color-link-hover);
+}
+
+/* optional: underline current / active link */
+.nav-links a.active {
+  text-decoration: underline;
+}
