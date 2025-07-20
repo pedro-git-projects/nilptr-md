@@ -1,0 +1,51 @@
+/* Mononoki Nerd Proportional */
+@font-face {
+  font-family: 'Mononoki Nerd';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/static/fonts/MononokiNerdFont-Regular.woff2') format('woff2'),
+       url('/static/fonts/MononokiNerdFont-Regular.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Mononoki Nerd';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/static/fonts/MononokiNerdFont-Italic.woff2') format('woff2'),
+       url('/static/fonts/MononokiNerdFont-Italic.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Mononoki Nerd';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/static/fonts/MononokiNerdFont-Bold.woff2') format('woff2'),
+       url('/static/fonts/MononokiNerdFont-Bold.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Mononoki Nerd';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/static/fonts/MononokiNerdFont-BoldItalic.woff2') format('woff2'),
+       url('/static/fonts/MononokiNerdFont-BoldItalic.ttf')  format('truetype');
+}
+
+/* Mononoki Nerd Monospace */
+@font-face {
+  font-family: 'Mononoki Nerd Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/static/fonts/MononokiNerdFontMono-Regular.woff2') format('woff2'),
+       url('/static/fonts/MononokiNerdFontMono-Regular.ttf')  format('truetype');
+}
+
+body {
+  font-family: 'Mononoki Nerd', system-ui, sans-serif;
+}
+
+code, pre {
+  font-family: 'Mononoki Nerd Mono', 'Courier New', monospace;
+}

@@ -161,7 +161,7 @@ func handlePage(w http.ResponseWriter, r *http.Request, pages fs.FS, md goldmark
 }
 
 func (a *App) BundleCSS(order []string) error {
-	const srcDir = StaticAssetsDir
+	const srcDir = StaticAssetsDir + "/css"
 	const outFile = "bundle.min.css"
 
 	outPath := filepath.Join(srcDir, outFile)
@@ -195,7 +195,7 @@ func (a *App) BundleCSS(order []string) error {
 }
 
 func (a *App) Run() error {
-	order := []string{"variables.css", "base.css", "layout.css"}
+	order := []string{"variables.css", "base.css", "layout.css", "fonts.css"}
 	if err := a.BundleCSS(order); err != nil {
 		a.logger.Fatalf("css bundling failed: %v", err)
 	}
