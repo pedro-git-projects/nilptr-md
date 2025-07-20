@@ -1,18 +1,23 @@
 package app
 
 import (
+	"bytes"
 	"embed"
+	"fmt"
 	"html/template"
 	"io/fs"
 	"log"
 	"net/http"
 	"os"
 	"path"
+	"path/filepath"
 	"strings"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/pedro-git-projects/nilptr-md/httpext"
+	"github.com/tdewolff/minify"
+	"github.com/tdewolff/minify/css"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
@@ -155,7 +160,45 @@ func handlePage(w http.ResponseWriter, r *http.Request, pages fs.FS, md goldmark
 	}
 }
 
+func (a *App) BundleCSS(order []string) error {
+	const srcDir = StaticAssetsDir
+	const outFile = "bundle.min.css"
+
+	outPath := filepath.Join(srcDir, outFile)
+	var buf bytes.Buffer
+
+	for _, fname := range order {
+		path := filepath.Join(srcDir, fname)
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return fmt.Errorf("reading %s: %w", fname, err)
+		}
+		buf.Write(data)
+		buf.WriteByte('\n')
+	}
+
+	m := minify.New()
+	m.AddFunc("text/css", css.Minify)
+
+	f, err := os.Create(outPath)
+	if err != nil {
+		return fmt.Errorf("creating bundle file %s: %w", outPath, err)
+	}
+	defer f.Close()
+
+	if err := m.Minify("text/css", f, &buf); err != nil {
+		return fmt.Errorf("minifying css: %w", err)
+	}
+
+	a.logger.Printf("bundled CSS into %s", outPath)
+	return nil
+}
+
 func (a *App) Run() error {
-	a.logger.Printf("Listening on %s", a.server.Addr)
+	order := []string{"variables.css", "base.css", "layout.css"}
+	if err := a.BundleCSS(order); err != nil {
+		a.logger.Fatalf("css bundling failed: %v", err)
+	}
+	a.logger.Printf("Serving CSS bundle and starting server on %s", a.server.Addr)
 	return a.server.ListenAndServe()
 }
