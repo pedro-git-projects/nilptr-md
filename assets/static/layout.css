@@ -1,0 +1,26 @@
+/*============================================================================
+  1. Header & Footer background
+============================================================================*/
+header,
+footer {
+  background-color: var(--color-header-bg);
+}
+
+/*============================================================================
+  2. Sticky-footer flex container
+============================================================================*/
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;   /* fill available space between header & footer */
+  background-color: var(--color-background);
+}
+footer {
+  flex-shrink: 0;    /* stay at bottom */
+}
